@@ -1,0 +1,53 @@
+<h3>Входные данные финальной модели (Regularized GBDT)</h3>
+
+<ul>
+  <li><strong>Объект прогноза</strong>: пара <code>field_id × year</code> (поле–год)</li>
+  <li><strong>Целевая переменная</strong>: <code>target_yield_t_ha</code> — фактическая урожайность, т/га</li>
+</ul>
+
+<h4>Блоки признаков</h4>
+<ul>
+  <li><strong>Геометрия поля (<code>field_*</code>)</strong>:
+    <ul>
+      <li><code>field_tillable_area</code>, <code>field_calculated_area</code></li>
+      <li><code>field_lat</code>, <code>field_long</code></li>
+    </ul>
+  </li>
+
+  <li><strong>Культура и предшественник</strong>:
+    <ul>
+      <li><code>crop_id</code> — культура в текущем году</li>
+      <li><code>prev_crop_id</code> — культура в предыдущем году на том же поле</li>
+    </ul>
+  </li>
+
+  <li><strong>Спутниковые индексы NDVI (<code>ndvi_*</code>)</strong>:
+    <ul>
+      <li>Сезонные агрегаты: <code>ndvi_mean_season</code>, <code>ndvi_max_season</code>, <code>ndvi_min_season</code>, <code>ndvi_std_season</code></li>
+      <li>Фазы сезона: <code>ndvi_early</code>, <code>ndvi_mid</code>, <code>ndvi_late</code></li>
+      <li>Динамика: <code>ndvi_trend</code>, <code>ndvi_green_period_days</code>, <code>ndvi_observations</code>, <code>ndvi_integral</code></li>
+      <li>Фенология: <code>ndvi_peak_date</code>, <code>ndvi_peak_doy</code></li>
+      <li>Производный признак: <code>ops_days_seeding_to_ndvi_peak</code></li>
+    </ul>
+  </li>
+
+  <li><strong>Почва (<code>field_soil_*</code>)</strong> — из последнего SoilTest на поле:
+    <ul>
+      <li><code>field_soil_pH</code>, <code>field_soil_OM</code></li>
+      <li><code>field_soil_P</code>, <code>field_soil_K</code>, <code>field_soil_N</code> (или <code>field_soil_N_NO3</code>)</li>
+      <li><code>field_soil_Mg</code>, <code>field_soil_CEC</code>, <code>field_soil_Ca_saturation</code> (если доступны)</li>
+    </ul>
+  </li>
+
+  <li><strong>Погода (<code>weather_*</code>)</strong> — сезонные агрегаты по <code>field_id × year</code>:
+    <ul>
+      <li>Температуры: <code>weather_temp_min_mean/min/max</code>, <code>weather_temp_avg_mean/min/max</code>, <code>weather_temp_max_mean/min/max</code></li>
+      <li>Осадки: <code>weather_precip_sum</code>, <code>weather_precip_mean</code></li>
+      <li>Снег: <code>weather_snow_mean</code>, <code>weather_snow_max</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><em>Признаки по операциям (<code>ops_*</code>, включая NPK) в финальную конфигурацию
+<code>full_extended + all_no_leak</code> не входят и используются только в отдельном
+экспериментальном датасете <code>ml_dataset_ops_ndvi_2021_2025.csv</code>.</em></p>

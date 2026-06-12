@@ -1,0 +1,37 @@
+================================================================================
+SANITY CHECK: all
+================================================================================
+Shape: 441 rows × 29 cols
+Model features (all_no_leak, numeric only): 26
+Top-10 NaN features:
+  field_soil_CEC: 441
+  field_soil_Ca_saturation: 441
+  field_soil_N_NO3: 436
+  weather_precip_sum_early: 82
+  weather_temp_avg_season: 82
+  weather_gdd_season: 82
+  weather_hot_days: 82
+  weather_precip_sum_season: 82
+  field_soil_N: 15
+  field_soil_OM: 10
+Target stats: min=6.081, max=64.855, mean=24.082, std=7.730
+Year column used: year
+Years: 16
+NDVI aggregate stats (min/mean/max):
+  ndvi_mean_season: min=0.3274 mean=0.4486 max=0.5733
+  ndvi_max_season: min=0.4720 mean=0.7015 max=0.8220
+  ndvi_early: min=0.2240 mean=0.4020 max=0.7482
+  ndvi_mid: min=0.3504 mean=0.5949 max=0.7517
+  ndvi_late: min=0.1833 mean=0.3484 max=0.5525
+Weather aggregate stats (min/mean/max):
+  weather_temp_avg_season: min=11.148 mean=15.400 max=17.958
+  weather_gdd_season: min=307.860 mean=1166.321 max=1994.120
+  weather_precip_sum_season: min=62.500 mean=246.686 max=792.140
+  weather_precip_sum_early: min=0.000 mean=119.349 max=367.550
+  weather_hot_days: min=2.000 mean=29.808 max=46.000
+Share of rows with ALL weather_* NaN: 0.186
+No date-like columns in this dataset (cannot directly verify 5–9 vs 5–10 windows here).
+Unique crop_id (count): 12
+Unique standard_name (count): 10
+WARNING: >1 standard_name in subset: ['barley_spring', 'maize', 'oil_seed_raps_spring', 'oil_seed_raps_winter', 'pea', 'safflower', 'soya', 'sunflower', 'wheat_spring', 'wheat_winter']
+Simple KFold(3) GBDT: R²=0.6348, RMSE=4.6714, MAPE=14.49% (n=441)

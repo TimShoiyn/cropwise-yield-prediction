@@ -1,0 +1,8 @@
+unique_crop_id:
+43.0
+
+unique_standard_name:
+wheat_spring
+
+unique_name:
+Пшеница яровая

@@ -1,0 +1,17 @@
+Dataset,Model,N obs,CV R2,CV RMSE (t/ha),CV MAE (t/ha),CV MAPE (%),Train R2,Train RMSE (t/ha)
+base_with_ndvi,no_ndvi_no_leak,440,-0.457,7.45,5.53,25.4,0.621,4.73
+base_with_ndvi,ndvi_only,440,-0.153,6.99,5.26,23.6,0.988,0.85
+base_with_ndvi,all,440,0.05,6.17,4.62,21.0,0.989,0.79
+base_with_ndvi,all_no_leak,440,0.051,6.16,4.58,20.9,0.991,0.72
+ndvi_only_extended,no_ndvi_no_leak,441,-1.138,9.09,7.1,33.5,0.963,1.49
+ndvi_only_extended,ndvi_only,441,-0.163,6.97,5.21,23.5,0.985,0.94
+ndvi_only_extended,all,441,0.211,5.59,4.03,17.9,0.995,0.54
+ndvi_only_extended,all_no_leak,441,0.211,5.59,4.03,17.9,0.995,0.54
+ops_ndvi_2021_2025,no_ndvi_no_leak,136,-4.527,11.12,9.01,32.3,0.999,0.22
+ops_ndvi_2021_2025,ndvi_only,136,-0.43,6.09,4.61,15.9,1.0,0.1
+ops_ndvi_2021_2025,all,136,-1.199,7.46,5.73,20.1,1.0,0.07
+ops_ndvi_2021_2025,all_no_leak,136,-1.542,7.93,6.04,21.2,1.0,0.05
+full_extended,no_ndvi_no_leak,441,-1.18,9.07,7.01,32.8,0.963,1.49
+full_extended,ndvi_only,441,-0.163,6.97,5.21,23.5,0.985,0.94
+full_extended,all,441,0.251,5.51,3.97,17.7,0.995,0.55
+full_extended,all_no_leak,441,0.251,5.51,3.97,17.7,0.995,0.55

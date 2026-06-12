@@ -1,0 +1,36 @@
+================================================================================
+SANITY CHECK: sunflower
+================================================================================
+Shape: 286 rows × 29 cols
+Model features (all_no_leak, numeric only): 26
+Top-10 NaN features:
+  field_soil_CEC: 286
+  field_soil_Ca_saturation: 286
+  field_soil_N_NO3: 284
+  weather_precip_sum_early: 82
+  weather_temp_avg_season: 82
+  weather_gdd_season: 82
+  weather_hot_days: 82
+  weather_precip_sum_season: 82
+  field_soil_N: 6
+  field_soil_OM: 4
+Target stats: min=8.484, max=33.901, mean=22.433, std=4.931
+Year column used: year
+Years: 15
+NDVI aggregate stats (min/mean/max):
+  ndvi_mean_season: min=0.3274 mean=0.4496 max=0.5733
+  ndvi_max_season: min=0.4920 mean=0.7099 max=0.8180
+  ndvi_early: min=0.2240 mean=0.3993 max=0.6954
+  ndvi_mid: min=0.3504 mean=0.6029 max=0.7487
+  ndvi_late: min=0.1931 mean=0.3461 max=0.4916
+Weather aggregate stats (min/mean/max):
+  weather_temp_avg_season: min=11.148 mean=14.669 max=16.646
+  weather_gdd_season: min=307.860 mean=898.495 max=1328.490
+  weather_precip_sum_season: min=62.500 mean=234.506 max=598.560
+  weather_precip_sum_early: min=0.000 mean=110.990 max=310.950
+  weather_hot_days: min=2.000 mean=24.118 max=46.000
+Share of rows with ALL weather_* NaN: 0.287
+No date-like columns in this dataset (cannot directly verify 5–9 vs 5–10 windows here).
+Unique crop_id (count): 1
+Unique standard_name (count): 1
+Simple KFold(3) GBDT: R²=0.6073, RMSE=3.0901, MAPE=11.76% (n=286)

@@ -1,0 +1,562 @@
+[
+  {
+    "endpoint": "/applicables/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/applicables/39",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/applicables/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/applicables/37",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/applicables/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/applicables/28",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/applicables/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/applicables/49",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/applicables/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/applicables/50",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/seeds/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/seeds/39",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 39,
+        "name": "LG 54.63CL (Круйзер)",
+        "manufacturer_name": null,
+        "crop_id": 40,
+        "additional_info": null,
+        "archived": false,
+        "description": null,
+        "units_of_measurement": "units",
+        "variety": "LG 54.63CL",
+        "reproduction_number": null,
+        "reproduction": null,
+        "wh_item_id": 21,
+        "wh_item_base_unit_id": 34,
+        "base_inventory_unit_id": 34,
+        "created_at": "2021-05-06T13:28:09.607+05:00",
+        "updated_at": "2023-11-09T17:04:10.642+05:00",
+        "external_id": null,
+        "ripeness_group": "early",
+        "ripeness_group_name": "Раннеспелые",
+        "thousand_seeds_mass": null,
+        "sowing_suitability": null,
+        "pieces_per_one_sowing_unit": null,
+        "germination": null,
+        "purity": null,
+        "color": "#05caf5",
+        "x_custom_protravitel_semyan": "Круйзер",
+        "x_custom_reprodukciya": "F1"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/seeds/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/seeds/37",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 37,
+        "name": "Дарья Э (Дивиденд Суприм)",
+        "manufacturer_name": null,
+        "crop_id": 43,
+        "additional_info": null,
+        "archived": false,
+        "description": null,
+        "units_of_measurement": "kg",
+        "variety": "Дарья",
+        "reproduction_number": null,
+        "reproduction": "elite",
+        "wh_item_id": 40,
+        "wh_item_base_unit_id": 19,
+        "base_inventory_unit_id": 19,
+        "created_at": "2021-05-06T09:25:04.881+05:00",
+        "updated_at": "2023-11-09T17:04:10.154+05:00",
+        "external_id": null,
+        "ripeness_group": null,
+        "ripeness_group_name": "",
+        "thousand_seeds_mass": null,
+        "sowing_suitability": null,
+        "pieces_per_one_sowing_unit": null,
+        "germination": null,
+        "purity": null,
+        "color": "#43e663",
+        "x_custom_protravitel_semyan": "Дивиденд Суприм",
+        "x_custom_reprodukciya": "Э"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/seeds/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/seeds/28",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 28,
+        "name": "Неома (Круйзер)",
+        "manufacturer_name": null,
+        "crop_id": 40,
+        "additional_info": null,
+        "archived": false,
+        "description": null,
+        "units_of_measurement": "units",
+        "variety": "Неома",
+        "reproduction_number": null,
+        "reproduction": null,
+        "wh_item_id": 26,
+        "wh_item_base_unit_id": 34,
+        "base_inventory_unit_id": 34,
+        "created_at": "2021-01-20T15:10:35.603+05:00",
+        "updated_at": "2023-11-09T17:04:10.056+05:00",
+        "external_id": null,
+        "ripeness_group": "mid",
+        "ripeness_group_name": "Среднеспелые",
+        "thousand_seeds_mass": null,
+        "sowing_suitability": null,
+        "pieces_per_one_sowing_unit": null,
+        "germination": null,
+        "purity": null,
+        "color": "#a5ab96",
+        "x_custom_protravitel_semyan": "Круйзер",
+        "x_custom_reprodukciya": "F1"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/seeds/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/seeds/49",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 49,
+        "name": "Дарья РС-1 (Дивиденд Суприм)",
+        "manufacturer_name": null,
+        "crop_id": 43,
+        "additional_info": null,
+        "archived": false,
+        "description": null,
+        "units_of_measurement": "kg",
+        "variety": "Дарья",
+        "reproduction_number": null,
+        "reproduction": "first",
+        "wh_item_id": 43,
+        "wh_item_base_unit_id": 19,
+        "base_inventory_unit_id": 19,
+        "created_at": "2022-05-23T14:39:43.059+05:00",
+        "updated_at": "2023-11-09T17:04:10.139+05:00",
+        "external_id": null,
+        "ripeness_group": null,
+        "ripeness_group_name": "",
+        "thousand_seeds_mass": null,
+        "sowing_suitability": null,
+        "pieces_per_one_sowing_unit": null,
+        "germination": null,
+        "purity": null,
+        "color": "#43e663",
+        "x_custom_protravitel_semyan": "Дивиденд Суприм",
+        "x_custom_reprodukciya": "РС-1"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/seeds/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/seeds/50",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 50,
+        "name": "Ликамеро РС-2 (Дивиденд Суприм)",
+        "manufacturer_name": null,
+        "crop_id": 43,
+        "additional_info": null,
+        "archived": false,
+        "description": null,
+        "units_of_measurement": "kg",
+        "variety": "Ликамеро",
+        "reproduction_number": null,
+        "reproduction": "second",
+        "wh_item_id": 45,
+        "wh_item_base_unit_id": 19,
+        "base_inventory_unit_id": 19,
+        "created_at": "2022-05-23T14:43:14.727+05:00",
+        "updated_at": "2023-11-09T17:04:09.858+05:00",
+        "external_id": null,
+        "ripeness_group": null,
+        "ripeness_group_name": "",
+        "thousand_seeds_mass": null,
+        "sowing_suitability": null,
+        "pieces_per_one_sowing_unit": null,
+        "germination": null,
+        "purity": null,
+        "color": "#5ee6b9",
+        "x_custom_protravitel_semyan": "Дивиденд Суприм",
+        "x_custom_reprodukciya": "РС-2"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/application_mix_items/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/application_mix_items/39",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/application_mix_items/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/application_mix_items/37",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/application_mix_items/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/application_mix_items/28",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/application_mix_items/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/application_mix_items/49",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/application_mix_items/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/application_mix_items/50",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/crops/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/crops/39",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 39,
+        "name": "Сахарный тростник",
+        "short_name": null,
+        "standard_name": "sugarcane",
+        "color": "#7db659",
+        "additional_info": null,
+        "description": null,
+        "season_type": "spring",
+        "parts": [
+          "all",
+          "root",
+          "stem",
+          "leaf",
+          "flower",
+          "fruit",
+          "seed"
+        ],
+        "base_crop_id": 32,
+        "productivity_estimate_crop_name": "sugarcane",
+        "plant_threat_crop_name": "sugarcane",
+        "hidden": false,
+        "multi_year": false,
+        "external_id": null,
+        "created_at": "2019-10-25T18:22:48.224+05:00",
+        "updated_at": "2025-09-19T17:52:57.248+05:00"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/crops/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/crops/37",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 37,
+        "name": "Суданская трава",
+        "short_name": "Суд. тр.",
+        "standard_name": "sudan_grass",
+        "color": "#00ffd9",
+        "additional_info": "",
+        "description": "",
+        "season_type": "spring",
+        "parts": [
+          "all",
+          "root",
+          "stem",
+          "leaf",
+          "flower",
+          "fruit",
+          "seed"
+        ],
+        "base_crop_id": 30,
+        "productivity_estimate_crop_name": "sudan_grass",
+        "plant_threat_crop_name": "sudan_grass",
+        "hidden": false,
+        "multi_year": false,
+        "external_id": null,
+        "created_at": "2019-10-25T18:22:48.145+05:00",
+        "updated_at": "2023-09-04T11:03:43.638+05:00"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/crops/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/crops/28",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 28,
+        "name": "Помело",
+        "short_name": null,
+        "standard_name": "pomelo",
+        "color": "#c8c87a",
+        "additional_info": null,
+        "description": null,
+        "season_type": "spring",
+        "parts": [
+          "all",
+          "root",
+          "stem",
+          "leaf",
+          "flower",
+          "fruit",
+          "seed"
+        ],
+        "base_crop_id": 46,
+        "productivity_estimate_crop_name": "pomelo",
+        "plant_threat_crop_name": "pomelo",
+        "hidden": false,
+        "multi_year": false,
+        "external_id": null,
+        "created_at": "2019-10-25T18:22:47.649+05:00",
+        "updated_at": "2023-02-19T22:34:29.156+05:00"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/crops/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/crops/49",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 49,
+        "name": "Лук",
+        "short_name": null,
+        "standard_name": "onion",
+        "color": "#c4a475",
+        "additional_info": null,
+        "description": null,
+        "season_type": "spring",
+        "parts": [
+          "all",
+          "root",
+          "stem",
+          "leaf",
+          "flower",
+          "fruit",
+          "seed"
+        ],
+        "base_crop_id": 15,
+        "productivity_estimate_crop_name": "onion",
+        "plant_threat_crop_name": "onion",
+        "hidden": false,
+        "multi_year": false,
+        "external_id": null,
+        "created_at": "2022-03-31T20:12:46.829+05:00",
+        "updated_at": "2023-02-19T22:34:29.348+05:00"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/crops/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/crops/50",
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "data": {
+        "id": 50,
+        "name": "Томат",
+        "short_name": null,
+        "standard_name": "tomato",
+        "color": "#b98076",
+        "additional_info": null,
+        "description": null,
+        "season_type": "spring",
+        "parts": [
+          "all",
+          "root",
+          "stem",
+          "leaf",
+          "flower",
+          "fruit",
+          "seed"
+        ],
+        "base_crop_id": 36,
+        "productivity_estimate_crop_name": "tomato",
+        "plant_threat_crop_name": "tomato",
+        "hidden": false,
+        "multi_year": false,
+        "external_id": null,
+        "created_at": "2022-03-31T20:12:46.872+05:00",
+        "updated_at": "2023-02-19T22:34:29.361+05:00"
+      }
+    },
+    "error": null
+  },
+  {
+    "endpoint": "/agro_operations/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/agro_operations/39",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/agro_operations/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/agro_operations/37",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/agro_operations/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/agro_operations/28",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/agro_operations/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/agro_operations/49",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/agro_operations/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/agro_operations/50",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/history_items/{id}",
+    "seed_id": 39,
+    "url": "https://operations.cropwise.com/api/v3/history_items/39",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/history_items/{id}",
+    "seed_id": 37,
+    "url": "https://operations.cropwise.com/api/v3/history_items/37",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/history_items/{id}",
+    "seed_id": 28,
+    "url": "https://operations.cropwise.com/api/v3/history_items/28",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/history_items/{id}",
+    "seed_id": 49,
+    "url": "https://operations.cropwise.com/api/v3/history_items/49",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  },
+  {
+    "endpoint": "/history_items/{id}",
+    "seed_id": 50,
+    "url": "https://operations.cropwise.com/api/v3/history_items/50",
+    "status_code": 404,
+    "success": false,
+    "data": null,
+    "error": "{\"status\":404,\"error\":\"Not Found\"}"
+  }
+]

@@ -1,0 +1,6 @@
+Experiment summary (GroupKFold by year, OOF metrics).
+All crops: phase-based features improved CV R2 from 0.309 to 0.372 and reduced CV RMSE from 5.39 to 5.16 t/ha (MAPE 17.9% -> 17.2%).
+This suggests that aligning NDVI and weather information to phenological time (GDD phases) adds useful signal at the mixed-crops level.
+Sunflower-only: metrics got slightly worse (CV R2 0.327 -> 0.286), which is plausible because the current phase feature set for sunflower is limited (mainly hot-days by phase) and may add noise without enough supporting weather/NDVI phase summaries.
+Wheat-only (N=67): CV R2 is unstable and negative in both cases (-0.228 -> -0.496); with small sample sizes per year, leaving one year out can dominate results and make added features appear harmful.
+For the supervisor: we should treat the allcrops improvement as the main positive result, and interpret crop-specific degradation as a sign that crop-specific phase features need refinement and/or more data per crop-year before they reliably help.

@@ -1,0 +1,4 @@
+comparison,n_rows_total,n_used,r2,rmse,mape,y_true_col,y_pred_col,cropwise_units_divide_by_10,cropwise_fact_to_ml_median_ratio,cropwise_fact_to_ml_ratio_n,notes
+model_vs_actual,441,441,0.4746740503255257,5.602322306082711,17.919434460476136,y_true,y_model_oof,False,0.9132379742640969,183,Detected ratio not ~10x -> keeping Cropwise values as-is (assumed already in t/ha).
+cropwise_vs_actual,441,221,1.0,0.0,0.0,y_true,y_cropwise_pred,False,0.9132379742640969,183,Detected ratio not ~10x -> keeping Cropwise values as-is (assumed already in t/ha).
+model_vs_cropwise,441,221,0.47131512901937145,6.52619600337545,17.393669797404833,y_cropwise_pred,y_model_oof,False,0.9132379742640969,183,Detected ratio not ~10x -> keeping Cropwise values as-is (assumed already in t/ha).

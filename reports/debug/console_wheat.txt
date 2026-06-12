@@ -1,0 +1,36 @@
+================================================================================
+SANITY CHECK: wheat
+================================================================================
+Shape: 67 rows × 29 cols
+Model features (all_no_leak, numeric only): 26
+Top-10 NaN features:
+  field_soil_CEC: 67
+  field_soil_Ca_saturation: 67
+  field_soil_N_NO3: 66
+  field_soil_N: 5
+  field_soil_P: 4
+  field_soil_K: 4
+  field_soil_pH: 4
+  field_soil_OM: 4
+  field_soil_Mg: 4
+  crop_id: 0
+Target stats: min=9.872, max=45.800, mean=27.776, std=9.048
+Year column used: year
+Years: 8
+NDVI aggregate stats (min/mean/max):
+  ndvi_mean_season: min=0.3705 mean=0.4535 max=0.5593
+  ndvi_max_season: min=0.4910 mean=0.6933 max=0.8220
+  ndvi_early: min=0.2449 mean=0.3816 max=0.5667
+  ndvi_mid: min=0.3940 mean=0.6113 max=0.7517
+  ndvi_late: min=0.2419 mean=0.3679 max=0.5525
+Weather aggregate stats (min/mean/max):
+  weather_temp_avg_season: min=16.722 mean=17.675 max=17.958
+  weather_gdd_season: min=1807.890 mean=1946.405 max=1994.120
+  weather_precip_sum_season: min=66.200 mean=244.183 max=549.160
+  weather_precip_sum_early: min=7.000 mean=144.208 max=310.950
+  weather_hot_days: min=24.000 mean=37.149 max=42.000
+Share of rows with ALL weather_* NaN: 0.000
+No date-like columns in this dataset (cannot directly verify 5–9 vs 5–10 windows here).
+Unique crop_id (count): 1
+Unique standard_name (count): 1
+Simple KFold(3) GBDT: R²=0.7417, RMSE=4.5986, MAPE=14.07% (n=67)

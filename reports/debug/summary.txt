@@ -1,0 +1,3 @@
+all: N=441, target_range=[6.08, 64.86], mean=24.08, std=7.73; all_weather_nan_share=0.186; simpleKFold_R2=0.635, RMSE=4.671, MAPE=14.49%
+wheat: N=67, target_range=[9.87, 45.80], mean=27.78, std=9.05; all_weather_nan_share=0.000; simpleKFold_R2=0.742, RMSE=4.599, MAPE=14.07%
+sunflower: N=286, target_range=[8.48, 33.90], mean=22.43, std=4.93; all_weather_nan_share=0.287; simpleKFold_R2=0.607, RMSE=3.090, MAPE=11.76%

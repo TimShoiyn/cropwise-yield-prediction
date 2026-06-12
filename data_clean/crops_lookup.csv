@@ -1,0 +1,69 @@
+id,name,short_name,standard_name,season_type,multi_year
+1,Овес яровой,,avena_spring,spring,False
+2,Овес озимый,,avena_winter,winter,False
+3,Ячмень яровой,,barley_spring,spring,False
+4,Ячмень озимый,,barley_winter,winter,False
+5,Гречиха,,buckwheat,spring,False
+6,Конопля,,cannabis,spring,False
+7,Нут,,chickpea,spring,False
+8,Хлопок,,cotton,spring,False
+9,Пар,,fallow,spring,False
+10,Грейпфрут,,grapefruit,spring,False
+11,Виноград,,grapevine,spring,False
+12,Лимон,,lemon,spring,False
+13,Чечевица,,lentil,spring,False
+14,Лайм,,lime,spring,False
+15,Лен,Лен,linum,spring,False
+16,Кукуруза,,maize,spring,False
+17,Люцерна,Люц-на,medicago,spring,False
+18,Просо,Просо,millet,spring,False
+19,Горчица,,mustard,spring,False
+20,Рапс яровой,,oil_seed_raps_spring,spring,False
+21,Рапс озимый,,oil_seed_raps_winter,winter,False
+22,Апельсин,,orange,spring,False
+23,Мак,,papaver,spring,False
+24,Горох,Горох,pea,spring,False
+25,Персик,,peach,spring,False
+26,Арахис,,peanut,spring,False
+27,Гранат,,pomegranate,spring,False
+28,Помело,,pomelo,spring,False
+29,Картофель,,potatoes,spring,False
+30,Рис,,rice,spring,False
+31,Рожь яровая,,rye_spring,spring,False
+32,Рожь озимая,,rye_winter,winter,False
+33,Сафлор,,safflower,spring,False
+34,Эспарцет,Эсп.,sainfoin,spring,False
+35,Сорго,,sorghum,spring,False
+36,Соя,,soya,spring,False
+37,Суданская трава,Суд. тр.,sudan_grass,spring,False
+38,Сахарная свекла,,sugar_beet,spring,False
+39,Сахарный тростник,,sugarcane,spring,False
+40,Подсолнечник,,sunflower,spring,False
+41,Тритикале яровая,,triticale_spring,spring,False
+42,Тритикале озимая,,triticale_winter,winter,False
+43,Пшеница яровая,,wheat_spring,spring,False
+44,Пшеница озимая,,wheat_winter,winter,False
+45,Естественный сенокос,,,spring,False
+46,Искусственный сенокос,Искусственный сенокос,,spring,False
+47,Яблоня,,apple,spring,False
+48,Морковь,,carrot,spring,False
+49,Лук,,onion,spring,False
+50,Томат,,tomato,spring,False
+51,Вишня,,cherry,spring,False
+52,Клубника,,strawberry,spring,False
+53,Капуста,,cabbage,spring,False
+54,Ячмень яровой УЛ,,,spring,False
+55,Донник,,sweet_clover,spring,False
+56,Пшеница яровая (твердая),,,spring,False
+57,зерносмесь,,,spring,False
+58,мн.травы,,,spring,False
+60,Горох семеноводство,,,spring,False
+61,Подсолнечник семеноводство,,,spring,False
+62,Пшеница яровая семеноводство,,,spring,False
+63,Ячмень семеноводство,,,spring,False
+64,Голубика,,blueberry,spring,False
+65,Орешник,,hazelnut,spring,False
+66,Груша,,pear,spring,False
+67,Слива,,plum,spring,False
+68,Черешня,,sweet_cherry,spring,False
+69,Орех греческий,,walnut,spring,False

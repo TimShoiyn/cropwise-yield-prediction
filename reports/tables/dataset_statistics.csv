@@ -1,0 +1,5 @@
+Dataset,N obs,N fields,Years,Mean yield (t/ha),Std yield (t/ha),N features
+base_with_ndvi,440,30,2010–2025,24.04,7.69,37
+ndvi_only_extended,441,30,2010–2025,24.08,7.74,51
+full_extended,441,30,2010–2025,24.08,7.74,41
+ops_ndvi_2021_2025,136,30,2021–2025,30.16,7.81,60

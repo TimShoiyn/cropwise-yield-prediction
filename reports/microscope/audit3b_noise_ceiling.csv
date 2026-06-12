@@ -1,0 +1,5 @@
+crop,n,var_y,noise_var,max_r2
+barley_spring,15,0.642,0.725,-0.129
+sunflower,40,0.32,0.25,0.221
+wheat_spring,40,0.766,0.339,0.557
+wheat_winter,26,2.128,0.297,0.86

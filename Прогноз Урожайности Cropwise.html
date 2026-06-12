@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прогноз урожайности по данным Cropwise API</title>
+<style>
+:root {
+  --font-family-display: Arial, sans-serif;
+  --font-weight-display: 600;
+  --font-family-content: Arial, sans-serif;
+  --font-weight-content: 400;
+  --font-size-content: 16px;
+  --line-height-content: 1.4;
+}
+
+body.theme-light {
+  --color-bg-base: #ffffff;
+  --color-bg-elevated: #f8fafc;
+  --color-bg-surface: #f1f5f9;
+  --color-bg-muted: #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-accent: #0284c7;
+  --color-primary: #0284c7;
+  --color-primary-foreground: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-content);
+  font-weight: var(--font-weight-content);
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-content);
+  overflow-x: hidden;
+}
+
+.slide {
+  width: 960px;
+  height: 540px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.row { flex-direction: row; }
+.col { flex-direction: column; }
+.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.space-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.fill-width { flex: 1; }
+
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.gap-xl { gap: 2rem; }
+
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.p-12 { padding: 3rem; }
+.p-16 { padding: 4rem; }
+
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-display);
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+.text-6xl { font-size: 3.75rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-xl { font-size: 1.25rem; }
+.text-lg { font-size: 1.125rem; }
+.text-base { font-size: 1rem; }
+.text-sm { font-size: 0.875rem; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-normal { font-weight: 400; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+.opacity-80 { opacity: 0.8; }
+.opacity-70 { opacity: 0.7; }
+
+ul, ol {
+  margin-left: 2rem;
+  line-height: 1.8;
+}
+
+ul li { list-style: disc; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #cbd5e1;
+}
+
+th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+.highlight {
+  background-color: #dbeafe;
+  font-weight: 600;
+}
+
+.success { color: #16a34a; font-weight: 600; }
+.warning { color: #ea580c; font-weight: 600; }
+</style>
+</head>
+<body class="theme-light">
+
+<section class="slide p-16 col center" style="background-color: #0284c7; color: #ffffff;">
+  <h1 class="text-6xl mb-6" style="color: #ffffff;">Прогноз урожайности по данным Cropwise API</h1>
+  <p class="text-2xl mb-4" style="color: #ffffff;">Методологический аудит и улучшение модели</p>
+  <p class="text-lg" style="color: #ffffff;">Северный Казахстан • 30 полей • 2010–2025</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Исходная проблема (Deep Review Report)</h2>
+  <h3 class="mb-4 text-xl" style="color: #475569;">Обнаруженные методологические ошибки:</h3>
+  <ul class="text-lg" style="color: #0f172a;">
+    <li><span class="warning">In-sample метрики по культурам</span> (R²≈0.99) вместо OOF-валидации</li>
+    <li><span class="warning">Утечка данных</span> через импутацию вне Pipeline и harvest-фичи</li>
+    <li><span class="warning">«Прогноз Cropwise»</span> (R²=1.0, RMSE=0) — дубликат таргета из productivity_data.csv</li>
+  </ul>
+  <p class="mt-6 text-base" style="color: #475569;"><strong>План исправлений:</strong> Итерация 1 (устранение утечек, OOF-валидация) → Итерация 2 (регуляризация, выбор алгоритма)</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">План исправлений</h2>
+  <div class="row gap-lg">
+    <div class="fill-width" style="background-color: #f1f5f9; color: #0f172a; padding: 1.5rem;">
+      <h3 class="mb-4" style="color: #0284c7;">Итерация 1: Методология</h3>
+      <ul style="color: #475569; font-size: 0.95rem;">
+        <li>Импутация в sklearn.Pipeline</li>
+        <li>Удаление harvest-фичей</li>
+        <li>OOF-предсказания через GroupKFold</li>
+      </ul>
+    </div>
+    <div class="fill-width" style="background-color: #f1f5f9; color: #0f172a; padding: 1.5rem;">
+      <h3 class="mb-4" style="color: #0284c7;">Итерация 2: Регуляризация</h3>
+      <ul style="color: #475569; font-size: 0.95rem;">
+        <li>Grid search по GBDT</li>
+        <li>Сравнение с CatBoost</li>
+        <li>Выбор финальной модели</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Итерация 1: Устранение методологических ошибок</h2>
+  <h3 class="mb-4 text-xl" style="color: #475569;">Изменения в коде:</h3>
+  <ul class="text-base" style="color: #0f172a;">
+    <li><strong>train_baseline_model.py:</strong> Импутация в Pipeline (ColumnTransformer + SimpleImputer с add_indicator=True), удалены harvest-фичи</li>
+    <li><strong>evaluate_with_oof():</strong> GroupKFold по годам → OOF-предсказания без утечки</li>
+    <li><strong>compare_by_crops_and_cropwise.py:</strong> Метрики по культурам на OOF, проверка дубликата Cropwise</li>
+  </ul>
+  <p class="mt-6 text-base" style="color: #475569;"><strong>Результат:</strong> Все метрики (CV и по культурам) теперь считаются на OOF через GroupKFold по годам</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Итерация 1: Базовые метрики</h2>
+  <p class="mb-4 text-lg" style="color: #475569;">Модель: <strong>Baseline GBDT</strong> (full_extended + all_no_leak, до регуляризации)</p>
+  <table style="margin-top: 1rem;">
+    <thead>
+      <tr>
+        <th>Метрика</th>
+        <th>Значение</th>
+        <th>Интерпретация</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CV R²</td>
+        <td>0.251</td>
+        <td>25% вариации объяснено</td>
+      </tr>
+      <tr>
+        <td>CV RMSE</td>
+        <td>5.51 т/га</td>
+        <td>Среднеквадратичная ошибка прогноза (RMSE)</td>
+      </tr>
+      <tr>
+        <td>CV MAPE</td>
+        <td>17.7%</td>
+        <td>Средняя абсолютная процентная ошибка (MAPE)</td>
+      </tr>
+      <tr class="warning">
+        <td>Train R²</td>
+        <td>0.995</td>
+        <td>Сильное переобучение</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Итерация 2: Регуляризация и выбор алгоритма</h2>
+  <p class="mb-4 text-lg" style="color: #475569;">Grid search GBDT + сравнение с CatBoost:</p>
+  <div class="row gap-lg mb-6">
+    <div style="flex: 1;">
+      <p class="text-base" style="color: #0f172a;"><strong>Сетка GBDT:</strong></p>
+      <ul class="text-sm" style="color: #475569;">
+        <li>max_depth ∈ {2, 3, 4}</li>
+        <li>min_samples_leaf ∈ {5, 10, 20}</li>
+        <li>subsample ∈ {0.7, 0.8, 1.0}</li>
+        <li>learning_rate ∈ {0.05, 0.1}</li>
+        <li>n_estimators ∈ {100–300}</li>
+      </ul>
+    </div>
+    <div style="flex: 1;">
+      <p class="text-base" style="color: #0f172a;"><strong>Лучший GBDT:</strong></p>
+      <ul class="text-sm success" style="color: #16a34a;">
+        <li>depth=3, min_leaf=5</li>
+        <li>subsample=0.7, lr=0.05</li>
+        <li>n_estimators=300</li>
+        <li>CV R²=0.37 (↑ с 0.25)</li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-base" style="color: #475569;"><strong>CatBoost:</strong> CV R²=0.30, MAPE=18.4% → не превзошёл регуляризованный GBDT</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-4" style="color: #0284c7;">Сравнение трёх моделей (OOF, GroupKFold по годам)</h2>
+  <table style="font-size: 0.8rem;">
+    <thead>
+      <tr>
+        <th>Модель</th>
+        <th>Гиперпараметры</th>
+        <th>CV R²</th>
+        <th>CV RMSE</th>
+        <th>CV MAPE</th>
+        <th>Train R²</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Baseline GBDT</td>
+        <td style="font-size: 0.75rem;">depth=5, lr=0.1, n=100</td>
+        <td>0.251</td>
+        <td>5.51</td>
+        <td>17.7%</td>
+        <td class="warning">0.995</td>
+      </tr>
+      <tr>
+        <td>CatBoost</td>
+        <td style="font-size: 0.75rem;">depth=3, lr=0.05, l2=5, n=500</td>
+        <td>0.300</td>
+        <td>5.47</td>
+        <td>18.4%</td>
+        <td>0.90</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Regularized GBDT ★</strong></td>
+        <td style="font-size: 0.75rem;">depth=3, min_leaf=5, sub=0.7, lr=0.05, n=300</td>
+        <td class="success">0.370</td>
+        <td class="success">5.14</td>
+        <td class="success">17.6%</td>
+        <td>0.961</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="mt-4 text-sm" style="color: #475569;"><strong>Вывод:</strong> Regularized GBDT — лучшее качество (CV R²=0.37) и баланс train/CV</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-4" style="color: #0284c7;">Финальная модель: Predictions vs Actual (OOF)</h2>
+  <div style="text-align: center;">
+    <img src="models/predictions_plot_full_extended_all_no_leak_reg_oof.png"
+         alt="Predictions vs Actual (full_extended / all_no_leak_reg, OOF)"
+         style="max-width: 100%; height: auto; border: 1px solid #cbd5e1;">
+  </div>
+  <p class="mt-4 text-base text-center" style="color: #475569;">CV R² ≈ 0.37 • CV RMSE ≈ 5.14 т/га • CV MAE ≈ 3.82 т/га • CV MAPE ≈ 17.6% • Train R² ≈ 0.96</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-4" style="color: #0284c7;">Feature Importance (Regularized GBDT, Top 10)</h2>
+  <div class="row gap-lg">
+    <div style="flex: 1.2;">
+      <table style="font-size: 0.85rem;">
+        <thead>
+          <tr>
+            <th>Признак</th>
+            <th>Importance</th>
+            <th>Группа</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>crop_id</td><td>0.26</td><td>Культура</td></tr>
+          <tr><td>ndvi_max_season</td><td>0.24</td><td>NDVI</td></tr>
+          <tr><td>ndvi_std_season</td><td>0.10</td><td>NDVI</td></tr>
+          <tr><td>ndvi_early</td><td>0.05</td><td>NDVI</td></tr>
+          <tr><td>ndvi_peak_doy</td><td>0.04</td><td>NDVI</td></tr>
+          <tr><td>ndvi_trend</td><td>0.04</td><td>NDVI</td></tr>
+          <tr><td>ndvi_integral</td><td>0.04</td><td>NDVI</td></tr>
+          <tr><td>weather_temp_min_min</td><td>0.03</td><td>Метео</td></tr>
+          <tr><td>field_lat</td><td>0.03</td><td>Геометрия</td></tr>
+          <tr><td>ndvi_mid</td><td>0.03</td><td>NDVI</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="flex: 0.8;">
+      <p class="text-sm" style="color: #475569;"><strong>Доминируют:</strong></p>
+      <ul class="text-sm" style="color: #0f172a;">
+        <li>Культура (26%)</li>
+        <li>NDVI-признаки (50%)</li>
+        <li>Метео (8%)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-4" style="color: #0284c7;">Метрики по группам культур (Regularized GBDT, OOF)</h2>
+  <table style="font-size: 0.9rem;">
+    <thead>
+      <tr>
+        <th>Группа</th>
+        <th>N</th>
+        <th>R²</th>
+        <th>RMSE (т/га)</th>
+        <th>MAPE (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td>Зерновые (grain)</td>
+        <td>133</td>
+        <td>0.447</td>
+        <td>7.45</td>
+        <td>19.9</td>
+      </tr>
+      <tr class="highlight">
+        <td>Масличные (oilseeds)</td>
+        <td>306</td>
+        <td>0.403</td>
+        <td>3.98</td>
+        <td>16.5</td>
+      </tr>
+      <tr>
+        <td>Прочие (other)</td>
+        <td>2</td>
+        <td>—</td>
+        <td>12.73</td>
+        <td>27.1</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="mt-4 text-sm" style="color: #475569;"><em>* OOF-предсказания через GroupKFold по годам (честная валидация)</em></p>
+  <p class="mt-2 text-sm" style="color: #475569;"><strong>«Прогноз Cropwise»</strong> из productivity_data.csv совпадает с таргетом (R²=1.0, RMSE=0) → не используется</p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-4" style="color: #0284c7;">Метрики по ключевым культурам (Regularized GBDT, OOF)</h2>
+  <table style="font-size: 0.9rem;">
+    <thead>
+      <tr>
+        <th>Культура</th>
+        <th>N наблюдений</th>
+        <th>R²</th>
+        <th>MAPE (%)</th>
+        <th>Примечание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td>Подсолнечник</td>
+        <td>286</td>
+        <td>0.404</td>
+        <td>14.9</td>
+        <td>Основная культура</td>
+      </tr>
+      <tr class="highlight">
+        <td>Яровая пшеница</td>
+        <td>67</td>
+        <td>0.656</td>
+        <td>18.5</td>
+        <td>Лучший R²</td>
+      </tr>
+      <tr>
+        <td>Лён масличный</td>
+        <td>13</td>
+        <td>0.273</td>
+        <td>15.0</td>
+        <td>Малый N</td>
+      </tr>
+      <tr>
+        <td>Нут</td>
+        <td>7</td>
+        <td>0.661</td>
+        <td>16.2</td>
+        <td>Малый N</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="mt-4 text-sm" style="color: #475569;"><em>* GroupKFold по годам, OOF-предсказания. Метрики нестабильны при N&lt;20</em></p>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Ключевые результаты двух итераций</h2>
+  <ul class="text-lg" style="color: #0f172a;">
+    <li><span class="success">Методология исправлена:</span> Устранены утечки (импутация в Pipeline, удалены harvest-фичи), OOF-валидация</li>
+    <li><span class="success">Качество улучшено:</span> CV R² вырос с 0.25 (baseline) до 0.37 (regularized GBDT) → +48%</li>
+    <li><span class="success">Переобучение снижено:</span> Train R² с 0.995 до 0.961 → разрыв train/CV сократился</li>
+    <li><span class="success">Честная валидация:</span> Все метрики (общие и по культурам) на OOF, GroupKFold по годам</li>
+  </ul>
+</section>
+
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+  <h2 class="mb-6" style="color: #0284c7;">Выводы и ограничения</h2>
+  <div class="row gap-lg">
+    <div class="fill-width" style="background-color: #f1f5f9; color: #0f172a; padding: 1.5rem;">
+      <h3 class="mb-4" style="color: #16a34a;">Достигнуто:</h3>
+      <ul style="color: #475569; font-size: 0.9rem;">
+        <li>CV R² ≈ 0.37 (37% межгодовой вариации урожайности)</li>
+        <li>CV MAPE ≈ 17.6% (RMSE ≈ 5.14 т/га)</li>
+        <li>Честная методология (OOF, GroupKFold по годам)</li>
+        <li>Применимость: ранжирование полей, диагностика</li>
+      </ul>
+    </div>
+    <div class="fill-width" style="background-color: #f1f5f9; color: #0f172a; padding: 1.5rem;">
+      <h3 class="mb-4" style="color: #ea580c;">Ограничения:</h3>
+      <ul style="color: #475569; font-size: 0.9rem;">
+        <li>Малая выборка (441 obs, 30 полей)</li>
+        <li>Один регион, одно хозяйство</li>
+        <li>Не для точного планирования контрактов</li>
+        <li>Метрики по редким культурам нестабильны</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide p-16 col center" style="background-color: #0284c7; color: #ffffff;">
+  <h2 class="text-5xl mb-6" style="color: #ffffff;">Спасибо за внимание!</h2>
+  <p class="text-xl" style="color: #ffffff;">Вопросы?</p>
+</section>
+
+</body>
+</html>

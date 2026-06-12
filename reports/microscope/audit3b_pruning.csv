@@ -1,0 +1,7 @@
+scenario,set,n_feat,r2,wcy_r2,mape
+all,full,149,-0.042,0.069,106.5
+all,core,24,0.089,0.124,95.9
+wheat,full,149,0.012,0.191,29.7
+wheat,core,24,0.241,0.095,28.0
+sunflower,full,149,-0.484,-0.07,25.9
+sunflower,core,24,-0.486,-0.144,25.5

@@ -1,0 +1,177 @@
+<section class="slide p-16 col" style="background-color: #ffffff; color: #0f172a;">
+    <h2 class="mb-6" style="color: #0284c7;">Входные данные для модели урожайности</h2>
+  
+    <h3 class="mb-4" style="color: #475569;">Сырые входные данные (raw)</h3>
+    <table style="font-size: 0.85rem; margin-bottom: 1.5rem;">
+      <thead>
+        <tr>
+          <th>Файл</th>
+          <th>Где используется</th>
+          <th>Содержание (кратко)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>data_raw/fields.csv</code></td>
+          <td><code>build_ml_dataset.py</code>, <code>compare_by_crops_and_cropwise.py</code></td>
+          <td>Справочник полей: id, название, геометрия, площади, координаты</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/crops.csv</code></td>
+          <td><code>build_ml_dataset.py</code>, <code>compare_by_crops_and_cropwise.py</code></td>
+          <td>Справочник культур: id, название (для маппинга <code>crop_id</code>)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/productivity_estimates.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Основной источник таргета: <code>field_id</code>, <code>year</code>, <code>estimate_value</code> → <code>target_yield_t_ha</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/additional_yields_from_history.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Дополнительные значения урожайности (добавляются только для новых <code>(field_id, year)</code>)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/yield_maps.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Карты урожайности; доп. источник таргета для новых <code>(field_id, year)</code> (avg по карте)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/history_items_full.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>История культур по полю/году: используется для <code>crop_id</code> и <code>prev_crop_id</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/ndvi_timeseries.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Временные ряды NDVI по полям и датам</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/soil_tests.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Почвенные показатели (pH, OM, P, K, N, Mg, CEC и др.) по полям</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/weather_season_aggregates.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Сезонные агрегаты погоды по (field_id, year): температуры, осадки, снег</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/operations.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Агрооперации: агрегаты <code>ops_*</code> (типы работ, даты посева/уборки, NPK из <code>application_mix_items</code>) и поднабор <code>ops_ndvi_2021_2025</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/fertilizers_npk.csv</code></td>
+          <td><code>build_ml_dataset.py</code> (опционально)</td>
+          <td>Справочник состава удобрений: <code>id</code>, <code>N</code>, <code>P2O5</code>, <code>K2O</code> (для более точного расчёта <code>ops_npk_*</code>)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/seeds.csv</code></td>
+          <td><code>build_ml_dataset.py</code> (опционально)</td>
+          <td>Каталог семян: используется для восстановления <code>crop_id</code> через seed_id → crop_id (если файл присутствует)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/productivity_data.csv</code></td>
+          <td><code>compare_by_crops_and_cropwise.py</code></td>
+          <td>Экспорт «Cropwise productivity»; столбец «прогноз» численно совпадает с таргетом</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mb-4" style="color: #475569;">Raw файлы, которые лежат в <code>data_raw/</code>, но не участвуют в текущей сборке датасета</h3>
+    <p class="text-sm" style="color: #475569; margin-bottom: 1.0rem;">
+      Эти файлы сохранены “про запас”, но в текущем пайплайне (сборка <code>ml_dataset_full_extended.csv</code> + обучение/оценка) не используются:
+      <code>plant_threats.csv</code>, <code>field_scout_reports_aggregated.csv</code>, <code>growth_stage_groups.csv</code>, <code>growth_stages.csv</code>,
+      <code>growth_scales.csv</code>, <code>productivity_estimate_peers.csv</code>, <code>productivity_estimate_histories.csv</code>,
+      <code>weather_history_items.csv</code>, <code>soil_test_samples.csv</code>, <code>field_to_station_mapping.csv</code>, <code>weather_stations.csv</code>.
+    </p>
+
+    <h3 class="mb-4" style="color: #475569;">Схема входных таблиц (ключи и важные поля)</h3>
+    <table style="font-size: 0.82rem; margin-bottom: 1.5rem;">
+      <thead>
+        <tr>
+          <th>Источник</th>
+          <th>Гранулярность</th>
+          <th>Ключ(и)</th>
+          <th>Важные поля (пример)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>data_raw/fields.csv</code></td>
+          <td>поле</td>
+          <td><code>id</code></td>
+          <td><code>id</code>, <code>name</code>, <code>field_tillable_area</code>, <code>field_calculated_area</code>, <code>field_lat</code>, <code>field_long</code>, (геометрия/контур)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/crops.csv</code></td>
+          <td>справочник</td>
+          <td><code>id</code></td>
+          <td><code>id</code>, <code>name</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/ndvi_timeseries.csv</code></td>
+          <td>поле–дата</td>
+          <td><code>field_id</code>, <code>date</code></td>
+          <td><code>field_id</code>, <code>date</code>, <code>ndvi</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/weather_season_aggregates.csv</code></td>
+          <td>поле–год</td>
+          <td><code>field_id</code>, <code>year</code></td>
+          <td><code>temp_*</code>, <code>precip_*</code>, <code>snow_*</code> (сезонные агрегаты)</td>
+        </tr>
+        <tr>
+          <td><code>data_raw/soil_tests.csv</code></td>
+          <td>поле–дата теста</td>
+          <td><code>field_id</code>, <code>made_at</code></td>
+          <td><code>soil_pH.value</code>, <code>soil_organic_matter.value</code>, <code>soil_P.value</code>, <code>soil_K.value</code>, <code>soil_N.value</code>/<code>soil_N_NO3.value</code>, <code>soil_Mg.value</code>, <code>soil_cation_exchange_capacity.value</code>, <code>soil_Ca_saturation.value</code></td>
+        </tr>
+        <tr>
+          <td><code>data_raw/operations.csv</code></td>
+          <td>операция</td>
+          <td><code>field_id</code>, <code>performed_at</code> (и др.)</td>
+          <td>типы работ (soil/application/harvesting/…), даты, нормы и NPK (если есть)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-sm" style="color: #475569; margin-bottom: 1.5rem;">
+      Примечание: <code>operations.csv</code> и признаки <code>ops_*</code> используются только в отдельной подвыборке <code>ops_ndvi_2021_2025</code> и не являются основой финальной модели.
+    </p>
+  
+    <h3 class="mb-4" style="color: #475569;">Обработанные датасеты (processed)</h3>
+    <table style="font-size: 0.85rem;">
+      <thead>
+        <tr>
+          <th>Файл</th>
+          <th>Кто создаёт</th>
+          <th>Назначение</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>data_processed/ml_dataset_full_extended.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Основной датасет (field_id × year): геометрия, культура, NDVI, метео, почва, таргет <code>target_yield_t_ha</code></td>
+        </tr>
+        <tr>
+          <td><code>data_processed/ml_dataset_ndvi_only_extended.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Датасет с расширенными NDVI‑признаками + культура/геометрия (+ часть метео/почвы)</td>
+        </tr>
+        <tr>
+          <td><code>data_processed/ml_dataset_with_ndvi.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Базовый исторический датасет с NDVI</td>
+        </tr>
+        <tr>
+          <td><code>data_processed/ml_dataset_ops_ndvi_2021_2025.csv</code></td>
+          <td><code>build_ml_dataset.py</code></td>
+          <td>Подвыборка 2021–2025: NDVI + детальные агрооперации по полям</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  

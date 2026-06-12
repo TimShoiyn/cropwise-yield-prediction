@@ -1,0 +1,25 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.log
+
+# Local environments and generated training caches
+.venv/
+venv/
+env/
+catboost_info/
+
+# Raw/private API exports are large and may contain sensitive farm data.
+# Keep the reproducible cleaned/processed datasets, reports, figures and scripts in git.
+data_raw/
+
+# Large/generated local artifacts
+*.pkl
+*.joblib
+*.cbm
+*.onnx
+
+# Temporary files
+tmp/
+temp/
+.cache/

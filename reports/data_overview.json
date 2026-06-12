@@ -1,0 +1,109 @@
+{
+  "fields_total": 30,
+  "fields_with_geometry": null,
+  "fields_with_area": 30,
+  "crops_total": 68,
+  "crops_with_standard_name": 58,
+  "history_items_total": 19172,
+  "history_items_unique_fields": 633,
+  "history_items_year_range": [
+    2000,
+    2030
+  ],
+  "history_items_with_harvested_weight": 1586,
+  "history_items_with_productivity": 2103,
+  "ndvi_rows": 757853,
+  "ndvi_unique_fields": 30,
+  "ndvi_date_range": [
+    "2007-06-11",
+    "2025-10-31"
+  ],
+  "openmeteo_rows": 175320,
+  "openmeteo_unique_fields": 30,
+  "openmeteo_date_range": [
+    "2010-01-01",
+    "2025-12-31"
+  ],
+  "operations_rows": 1826,
+  "operations_unique_fields": 30,
+  "scout_reports_rows": 2636,
+  "scout_reports_unique_fields": 386,
+  "soil_samples_rows": 1977,
+  "soil_samples_unique_fields": null,
+  "productivity_data_rows": 3070,
+  "productivity_data_year_range": [
+    2018,
+    2025
+  ],
+  "yield_maps_rows": 104,
+  "yield_maps_unique_fields": 26,
+  "v17_clean_07_01": {
+    "rows": 180,
+    "cols": 159,
+    "unique_fields": 30,
+    "year_range": [
+      2018,
+      2025
+    ],
+    "crops": {
+      "sunflower": 59,
+      "wheat_spring": 54,
+      "wheat_winter": 34,
+      "barley_spring": 15,
+      "oil_seed_raps_winter": 4,
+      "soya": 4,
+      "pea": 4,
+      "maize": 3,
+      "oil_seed_raps_spring": 2
+    },
+    "target_mean": 2.4581858155969005,
+    "target_min": 0.1679999999999999,
+    "target_max": 5.519493927125506
+  },
+  "v17_clean_08_01": {
+    "rows": 180,
+    "cols": 166,
+    "unique_fields": 30,
+    "year_range": [
+      2018,
+      2025
+    ],
+    "crops": {
+      "sunflower": 59,
+      "wheat_spring": 54,
+      "wheat_winter": 34,
+      "barley_spring": 15,
+      "oil_seed_raps_winter": 4,
+      "soya": 4,
+      "pea": 4,
+      "maize": 3,
+      "oil_seed_raps_spring": 2
+    },
+    "target_mean": 2.4581858155969005,
+    "target_min": 0.1679999999999999,
+    "target_max": 5.519493927125506
+  },
+  "v17_clean_09_01": {
+    "rows": 180,
+    "cols": 173,
+    "unique_fields": 30,
+    "year_range": [
+      2018,
+      2025
+    ],
+    "crops": {
+      "sunflower": 59,
+      "wheat_spring": 54,
+      "wheat_winter": 34,
+      "barley_spring": 15,
+      "oil_seed_raps_winter": 4,
+      "soya": 4,
+      "pea": 4,
+      "maize": 3,
+      "oil_seed_raps_spring": 2
+    },
+    "target_mean": 2.4581858155969005,
+    "target_min": 0.1679999999999999,
+    "target_max": 5.519493927125506
+  }
+}
